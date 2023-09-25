@@ -8,7 +8,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://kumarsameer2001:micro@services.4vsrgry.mongodb.net/Products",
+    `mongodb+srv://kumarsameer2001:micro@services.4vsrgry.mongodb.net/Products`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

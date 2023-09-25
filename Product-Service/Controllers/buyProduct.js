@@ -20,7 +20,6 @@ produceMessage=async function (data){
             topic: 'order',
             messages,
         });
-        console.log('Message Sent Successfully');
     }catch(error){
         console.error('Error message',error);
     }finally{

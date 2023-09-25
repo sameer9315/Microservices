@@ -3,7 +3,6 @@ const router = express.Router();
 const tryCatchWrapper= require('../Middlewares/trycatch');
 const productController = require("../Controllers/product");
 const productBuyController= require('../Controllers/buyProduct');
-const {Product}= require('../Model/product');
 const mongoOperations= require('../mongooseOperations');
 const {sendResponse}= require('../Middlewares/response');
 const {message_sent}=require('../constants');
@@ -23,9 +22,8 @@ router.post("/buy", async (req,res)=>{
             email: req.user.email,
         }
     await productBuyController.produceMessage(data);
-    sendResponse(res, res.statusCode, message_sent)
-
-    // res.json({message: 'Product details sent to kafaka'});
+    sendResponse(res, res.statusCode, message_sent);
+    
     }
 }
     )

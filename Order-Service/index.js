@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const {Kafka} = require("kafkajs");
 const mongoOperations=require('./mongooseOperatons');
 const OrderRoutes = require("./Router/order");
+const { sendResponse } = require("../Product-Service/Middlewares/response");
 const app = express();
 
 mongoose
@@ -39,9 +40,10 @@ async function consumeAndStoreOrder(){
         eachMessage: async({topic , partition, message})=>{
             try{
                 const orderData=JSON.parse(message.value.toString('utf-8'));
-                console.log(orderData);
                 const order=await mongoOperations.saveOrder(orderData);
-                if(order){console.log('Order Save', order)}
+                if(order){
+                   console.log(order);
+                }
             }catch(error){
                 console.error('Error', error)
             }
