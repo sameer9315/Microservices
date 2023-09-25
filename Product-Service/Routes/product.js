@@ -24,8 +24,6 @@ router.post("/buy", async (req,res)=>{
         }
     await productBuyController.produceMessage(data);
     sendResponse(res, res.statusCode, message_sent)
-
-    // res.json({message: 'Product details sent to kafaka'});
     }
 }
     )
